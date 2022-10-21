@@ -2,23 +2,38 @@ package main
 
 import "fmt"
 
-func SmallestInteger[T interface{}](a T, b T) T {
+func main() {
 
-	if a < b {
-		return a
+	numberSum := []int{20, 22, 67}
+	fmt.Println("Sum", Sum[int](numberSum))
+
+	numberSub := []int{100, 50, 25}
+	fmt.Println("Sub", Sub[int](numberSub))
+
+}
+
+// --------------------------------------------
+// Declaring in func
+func Sum[V int64 | float64 | int](m []V) V {
+	var s V
+	for _, v := range m {
+		s += v
 	}
 
-	return b
-
+	return s
 }
 
-type Pessoa struct {
-	Name string
+// --------------------------------------------
+// Declaring out func
+type Interface interface {
+	int64 | float64 | int
 }
 
-func main() {
-	fmt.Println(IsEquals[string]("1", "2"))
-	fmt.Println(IsEquals[int](1, 1))
-	fmt.Println(IsEquals[bool](true, true))
-	fmt.Println(IsEquals[Pessoa](Pessoa{"Tiago"}, Pessoa{"Tiago"}))
+func Sub[V Interface](m []V) V {
+	s := m[0]
+	for _, v := range m {
+		s -= v
+	}
+
+	return s
 }
