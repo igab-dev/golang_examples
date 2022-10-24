@@ -6,19 +6,13 @@ import (
 )
 
 func firstRotine(times int, ch chan int) {
-
-	for i := 0; i < times; i++ {
-		result := 666
-		ch <- result
-	}
+	result := 666
+	ch <- result
 }
 
 func secondRotine(times int, ch2 chan int) {
-
-	for i := 0; i < times; i++ {
-		result := 777
-		ch2 <- result
-	}
+	result := 777
+	ch2 <- result
 }
 
 func main() {
